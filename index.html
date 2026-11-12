@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rm Kimathi · personal site</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f9fafc;
+      color: #1a2b3f;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* header / nav */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+
+    .logo i {
+      background: none;
+      -webkit-text-fill-color: #2a5298;
+      margin-right: 6px;
+      font-size: 1.4rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #2d3e5f;
+      transition: color 0.2s;
+      font-size: 1rem;
+    }
+
+    .nav-links a:hover {
+      color: #1e5fbf;
+    }
+
+    .btn-outline {
+      border: 1.5px solid #2a5298;
+      padding: 0.5rem 1.25rem;
+      border-radius: 40px;
+      color: #2a5298;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: #2a5298;
+      color: white;
+    }
+
+    /* hero */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 3rem;
+      padding: 2.5rem 0 4rem;
+    }
+
+    .hero-content {
+      flex: 1 1 300px;
+      max-width: 600px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(42, 82, 152, 0.08);
+      color: #1e3c72;
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      letter-spacing: 0.3px;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(4px);
+    }
+
+    .hero-content h1 {
+      font-size: 3.3rem;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      color: #0a1c2f;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(120deg, #2a5298 0%, #1e5fbf 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-content p {
+      font-size: 1.15rem;
+      color: #3e4f6b;
+      margin-bottom: 2.3rem;
+      max-width: 480px;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: #1e3c72;
+      color: white;
+      padding: 0.85rem 2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 10px 20px -8px rgba(30, 60, 114, 0.25);
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .btn-primary i {
+      font-size: 0.9rem;
+    }
+
+    .btn-primary:hover {
+      background: #0f2b4f;
+      transform: translateY(-2px);
+      box-shadow: 0 18px 28px -10px rgba(30, 60, 114, 0.35);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1.5px solid #cddae9;
+      color: #1a2b3f;
+      padding: 0.85rem 2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary i {
+      font-size: 0.9rem;
+    }
+
+    .btn-secondary:hover {
+      background: white;
+      border-color: #1e5fbf;
+      color: #1e5fbf;
+      box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.08);
+    }
+
+    .hero-visual {
+      flex: 1 1 280px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .avatar-card {
+      background: white;
+      padding: 1.8rem 2rem;
+      border-radius: 48px;
+      box-shadow: 0 30px 50px -20px rgba(0, 20, 50, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.8);
+      text-align: center;
+      width: 260px;
+      backdrop-filter: blur(4px);
+      transform: rotate(2deg);
+      transition: transform 0.3s;
+    }
+
+    .avatar-card:hover {
+      transform: rotate(0deg) scale(1.02);
+    }
+
+    .avatar-icon {
+      width: 110px;
+      height: 110px;
+      background: linear-gradient(135deg, #eef4ff, #d9e6ff);
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+      color: #1e3c72;
+      font-size: 3.5rem;
+      border: 3px solid white;
+      box-shadow: 0 10px 20px -8px rgba(30, 60, 114, 0.2);
+    }
+
+    .avatar-card h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #0a1c2f;
+      margin-bottom: 0.3rem;
+    }
+
+    .avatar-card .handle {
+      color: #5f7396;
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 1.4rem;
+    }
+
+    .avatar-card .handle i {
+      font-size: 0.8rem;
+      margin-right: 4px;
+    }
+
+    .mini-stats {
+      display: flex;
+      justify-content: center;
+      gap: 1.6rem;
+      border-top: 1px solid #e2eaf3;
+      padding-top: 1.2rem;
+    }
+
+    .mini-stat {
+      text-align: center;
+    }
+
+    .mini-stat .num {
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: #1e3c72;
+    }
+
+    .mini-stat .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #617a9e;
+      font-weight: 600;
+    }
+
+    /* featured section */
+    .featured {
+      padding: 3rem 0 5rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #0a1c2f;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-header p {
+      color: #4b5f7e;
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.8rem 1.8rem 1.8rem;
+      box-shadow: 0 8px 28px -8px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.02);
+      transition: all 0.25s;
+      border: 1px solid rgba(205, 218, 233, 0.4);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 40px -12px rgba(30, 60, 114, 0.15);
+      border-color: rgba(42, 82, 152, 0.2);
+    }
+
+    .project-icon {
+      width: 52px;
+      height: 52px;
+      background: #eef4ff;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      color: #2a5298;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #0a1c2f;
+      margin-bottom: 0.6rem;
+    }
+
+    .project-card p {
+      color: #4b5f7e;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-tags span {
+      background: #f0f4fa;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #1e3c72;
+      padding: 0.3rem 0.8rem;
+      border-radius: 30px;
+      letter-spacing: 0.2px;
+    }
+
+    .project-link {
+      text-decoration: none;
+      font-weight: 600;
+      color: #1e5fbf;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+
+    .project-link i {
+      font-size: 0.75rem;
+      transition: transform 0.2s;
+    }
+
+    .project-link:hover {
+      gap: 10px;
+    }
+
+    .project-link:hover i {
+      transform: translateX(3px);
+    }
+
+    /* footer */
+    .footer {
+      margin-top: auto;
+      border-top: 1px solid #e2eaf3;
+      padding: 2.5rem 0 2rem;
+      text-align: center;
+      color: #5a6f8e;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .social-links a {
+      color: #3e4f6b;
+      font-size: 1.4rem;
+      transition: all 0.2s;
+    }
+
+    .social-links a:hover {
+      color: #1e5fbf;
+      transform: scale(1.1);
+    }
+
+    .copyright {
+      font-size: 0.9rem;
+      letter-spacing: 0.2px;
+    }
+
+    .copyright i {
+      font-size: 0.8rem;
+      color: #e25555;
+      margin: 0 2px;
+    }
+
+    /* responsive */
+    @media (max-width: 800px) {
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 1rem 0 3rem;
+      }
+
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .cta-group {
+        justify-content: center;
+      }
+
+      .navbar {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .nav-links {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .avatar-card {
+        transform: rotate(0deg);
+        margin-bottom: 1rem;
+      }
+
+      .section-header h2 {
+        font-size: 1.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .container {
+        padding: 0 1.2rem;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- navigation -->
+    <nav class="navbar">
+      <a href="#" class="logo">
+        <i class="fas fa-code"></i> rmkimathi
+      </a>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="btn-outline">Contact</a>
+      </div>
+    </nav>
+
+    <!-- hero section -->
+    <section class="hero">
+      <div class="hero-content">
+        <span class="hero-badge">
+          <i class="fas fa-terminal" style="margin-right: 6px;"></i> rmkimathi.github.io
+        </span>
+        <h1>
+          Building things <br>
+          <span class="hero-highlight">for the web.</span>
+        </h1>
+        <p>
+          Developer & problem solver. I craft clean, functional digital experiences and explore the edges of the modern web.
+        </p>
+        <div class="cta-group">
+          <a href="#work" class="btn-primary">
+            <i class="fas fa-arrow-down"></i> See my work
+          </a>
+          <a href="https://github.com/rmkimathi" target="_blank" rel="noopener" class="btn-secondary">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="avatar-card">
+          <div class="avatar-icon">
+            <i class="fas fa-user-astronaut"></i>
+          </div>
+          <h3>Rm Kimathi</h3>
+          <div class="handle">
+            <i class="fas fa-map-pin"></i> @rmkimathi
+          </div>
+          <div class="mini-stats">
+            <div class="mini-stat">
+              <div class="num">12+</div>
+              <div class="label">projects</div>
+            </div>
+            <div class="mini-stat">
+              <div class="num">5</div>
+              <div class="label">languages</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- featured work / projects -->
+    <section class="featured" id="work">
+      <div class="section-header">
+        <h2>Featured projects</h2>
+        <p>Open source, experiments, and things I've built along the way.</p>
+      </div>
+      <div class="project-grid">
+        <!-- project 1 -->
+        <div class="project-card">
+          <div class="project-icon">
+            <i class="fas fa-cloud-sun"></i>
+          </div>
+          <h3>WeatherFlow</h3>
+          <p>A minimal weather dashboard with auto-location and 7‑day forecast. Built with vanilla JS and OpenWeather API.</p>
+          <div class="project-tags">
+            <span>JavaScript</span>
+            <span>API</span>
+            <span>CSS Grid</span>
+          </div>
+          <a href="#" class="project-link">Live demo <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <!-- project 2 -->
+        <div class="project-card">
+          <div class="project-icon">
+            <i class="fas fa-tasks"></i>
+          </div>
+          <h3>TaskFlow</h3>
+          <p>Kanban-style task manager with drag & drop, local storage persistence, and a clean dark UI.</p>
+          <div class="project-tags">
+            <span>React</span>
+            <span>Tailwind</span>
+            <span>dnd-kit</span>
+          </div>
+          <a href="#" class="project-link">Live demo <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <!-- project 3 -->
+        <div class="project-card">
+          <div class="project-icon">
+            <i class="fas fa-code-branch"></i>
+          </div>
+          <h3>GitHub Explorer</h3>
+          <p>Search and visualise GitHub profiles and repositories. Built with the GitHub REST API and Chart.js.</p>
+          <div class="project-tags">
+            <span>TypeScript</span>
+            <span>Chart.js</span>
+            <span>Fetch</span>
+          </div>
+          <a href="#" class="project-link">Live demo <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <!-- project 4 -->
+        <div class="project-card">
+          <div class="project-icon">
+            <i class="fas fa-palette"></i>
+          </div>
+          <h3>UI Snippets</h3>
+          <p>A collection of accessible, responsive UI components built with modern CSS. Copy, paste, and customize.</p>
+          <div class="project-tags">
+            <span>HTML/CSS</span>
+            <span>Accessibility</span>
+            <span>Design</span>
+          </div>
+          <a href="#" class="project-link">Live demo <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="social-links">
+        <a href="https://github.com/rmkimathi" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+      <div class="copyright">
+        <i class="fas fa-code"></i> rmkimathi.github.io · crafted with <i class="fas fa-heart"></i> · © 2025
+      </div>
+    </div>
+  </footer>
+
+  <!-- tiny smooth scroll for anchor links (optional) -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
